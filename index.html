@@ -102,16 +102,21 @@
                 if (trueCount === rand.length && $("#Title").text() === "Press any key to get started" && guessremain != 15) {
 
                     $("#Title").text("You win!");
-                    wins++
-                    $("#wins").text(wins)
+      
                     }
                 
                 else if (trueCount === rand.length && $("#Title").text() === "You win!") {
+                    window.location.reload();
                     $("#Title").text("Press any key to get started");
                     $("#guessedletters").empty()
+                    guesses = [];
                     guessremain = 15;
+                    trueCount = 0;
+                    wins++
+                    $("#wins").text(wins)
                     $("#guessremain").text(guessremain)
                     return
+                  
                     
                 }
 
