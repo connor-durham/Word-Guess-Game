@@ -1,0 +1,20 @@
+.lines {
+    
+    padding: 10px;
+}
+
+#worddisplay {
+    display:flex;
+    justify-content: center; 
+
+}
+
+.content {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  [class^="letter-"] {
+        padding: 10px
+  }
+
