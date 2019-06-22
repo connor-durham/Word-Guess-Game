@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <title>Word Guess Game</title>
+</head>
+<body>
+    <div class="content">
+        <h1 id="Title">Press any key to get started</h1>
+
+        <h2 id="gametype">The theme is the 50 states</h2>
+
+        <div id="winscounter">Wins
+             <span id="wins"></span>
+         </div>  
+
+         <div id="winscounter">Losses
+            <span id="losses"></span>
+        </div>  
+
+        <div id="worddisplay" style="letter-spacing: 5px;"></div>
+
+        <br>
+
+        <div id="guesscounter">Number of guess remaining
+                <span id="guessremain"></span>
+        </div>
+
+        <div id="guesses">Letters already guessed: 
+                <span id="guessedletters"></span>
+        </div>
+    </div>
+
+        <script type="text/javascript">
+             $(document).ready(function() {
+            let choices = ['alabama','alaska','arizona','arkansas','california','colorado','connecticut','delaware','district of columbia','florida','georgia','hawaii','idaho','illinois','indiana','iowa','kansas','kentucky','louisiana','maine','maryland','massachusetts','michigan','minnesota','mississippi','missouri','montana','nebraska','nevada','new hampshire','new jersey','new mexico','new york','north carolina','north dakota','ohio','oklahoma','oregon','pennsylvania','rhode island','south carolina','south dakota','tennessee','texas','utah','vermont','virginia','washington','west virginia','wisconsin','wyoming']
+            let rand;
+            let wordDisplay = $("#worddisplay");
+            let myWord;
+            let losses = 0;
+            let underscore = [];
+            let guessremain = 15;       
+            let guesses = [];
+            let wins = 0;
+            let trueCount = 0;
+            function randomWord() {
+                rand = choices[Math.floor(Math.random() * choices.length)];
+            }
+            
+            randomWord();
+            myWord = rand.split("");
+
+            for (let i = 0; i < rand.length; i++) {
+                underscore.push(rand[i].replace(rand[i], '_'));        
+            }
+
+            $("#guessremain").text(guessremain)
+            wordDisplay.text(underscore.join(""));
+
+            console.log('word', myWord);
+            document.onkeyup = function(event) {
+	            let userGuess = event.key;
+                
+                for (let i = 0; i <= rand.length; i++){
+                    if (userGuess === myWord[i]) {
+                        underscore[i] = userGuess;
+                        wordDisplay.text(underscore.join(""));
+                    }
+                }
+                if(guessremain === 0) {
+                    losses++;
+                    guessremain = 15;
+                    randomWord();
+                    wordDisplay.text(underscore.join(""));
+                }
+                guessremain--;
+ 
+                $('#guessremain').text(guessremain);
+            }
+        });
+        </script>
+</body>
+</html>

@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="content">
-        <h1 id="Title">Press any key to get started</h1>
+        <h1 id="Title">Press any key to guess a letter</h1>
 
         <h2 id="gametype">The theme is the 50 states</h2>
 
@@ -45,7 +45,12 @@
 
             let choices = ['alabama','alaska','arizona','arkansas','california','colorado','connecticut','delaware','district of columbia','florida','georgia','hawaii','idaho','illinois','indiana','iowa','kansas','kentucky','louisiana','maine','maryland','massachusetts','michigan','minnesota','mississippi','missouri','montana','nebraska','nevada','new hampshire','new jersey','new mexico','new york','north carolina','north dakota','ohio','oklahoma','oregon','pennsylvania','rhode island','south carolina','south dakota','tennessee','texas','utah','vermont','virginia','washington','west virginia','wisconsin','wyoming']
 
-            let rand = choices[Math.floor(Math.random() * choices.length)];
+            let randomizer =  function(){
+            
+                return choices[Math.floor(Math.random() * choices.length)];
+            }
+
+            let rand = randomizer()
 
             let guessremain = 15;       
 
@@ -56,9 +61,11 @@
             let wins = 0;
 
             let trueCount = 0;
-            
 
-            for (let i = 0; i < rand.length; i++) {
+
+            let creator = function() {
+
+                for (let i = 0; i < rand.length; i++) {
 
                 let lines = $("<div>");
                 lines.addClass("lines");
@@ -67,7 +74,10 @@
                 lines.addClass("letter_"+i)
         
 
+                }
             }
+            creator()
+
             console.log(rand)
          
 
@@ -76,6 +86,7 @@
                 if (guessremain > 0) {
 
 	            let userGuess = event.key;
+           
 
                 console.log(userGuess)
                 
@@ -99,15 +110,14 @@
                 }
 
  
-                if (trueCount === rand.length && $("#Title").text() === "Press any key to get started" && guessremain != 15) {
+                if (trueCount === rand.length && $("#Title").text() === "Press any key to guess a letter" && guessremain != 15) {
 
                     $("#Title").text("You win!");
       
                     }
                 
                 else if (trueCount === rand.length && $("#Title").text() === "You win!") {
-                    window.location.reload();
-                    $("#Title").text("Press any key to get started");
+                    $("#Title").text("Press any key to guess a letter");
                     $("#guessedletters").empty()
                     guesses = [];
                     guessremain = 15;
@@ -115,7 +125,14 @@
                     wins++
                     $("#wins").text(wins)
                     $("#guessremain").text(guessremain)
-                    return
+                    $("#worddisplay").empty()
+
+                    rand = randomizer()
+                    console.log(rand)
+
+                    creator()
+                   
+                    return;
                   
                     
                 }
@@ -131,13 +148,27 @@
 
                 }
 
-                else if (guessremain === 0 && $("#Title").text() === "Press any key to get started" ){
-                    $("#Title").text("You lost, press 'p' to try again");
+                else if (guessremain === 0 && $("#Title").text() === "Press any key to guess a letter" ){
+                    $("#Title").text("You lost, press any key to try again");
                 }                
             
                 
-                else if (guessremain === 0 && $("#Title").text() === "You lost, press 'p' to try again") {
-                    
+                else if (guessremain === 0 && $("#Title").text() === "You lost, press any key to try again") {
+                    $("#Title").text("Press any key to guess a letter");
+                    $("#guessedletters").empty()
+                    guesses = [];
+                    guessremain = 15;
+                    trueCount = 0;
+                    $("#wins").text(wins)
+                    $("#guessremain").text(guessremain)
+                    $("#worddisplay").empty()
+
+                    rand = randomizer()
+                    console.log(rand)
+
+                    creator()
+                   
+                    return;
 
                 }
              }
