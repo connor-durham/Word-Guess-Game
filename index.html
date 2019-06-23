@@ -6,31 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery.js"></script>
     <title>Word Guess Game</title>
 </head>
 <body>
+    <div id="background">
+
     <div class="content">
         <h1 id="Title" class="jumbotron jumbotron-fluid">Press any key to guess a letter</h1>
-
-        <h2 id="gametype">The theme is the 50 states</h2>
-
-        <div id="winscounter">Wins :
-             <span id="wins"></span>
-         </div>  
-
-        <div id="worddisplay"></div>
-
-        <br>
-
-        <div id="guesscounter">Number of guess remaining :
-                <span id="guessremain"></span>
+        <div class="flexbox">
+            <h2 id="gametype">The theme is the 50 states</h2>
         </div>
-
-        <div id="guesses">Letters already guessed: 
-                <span id="guessedletters"></span>
+        <div class="flexbox">
+            <div id="winscounter">Wins :
+                <span id="wins"></span>
+            </div>  
         </div>
+            <div id="worddisplay"></div>
+
+            <br>
+        <div class="flexbox">
+            <div id="guesscounter">Number of guess remaining :
+                    <span id="guessremain"></span>
+            </div>
+        </div>
+        <div class="flexbox">
+            <div id="guesses">Letters already guessed: 
+                    <div id="guessedletters"></div>
+            </div>
+        </div>
+       
 
 
 
@@ -178,5 +185,6 @@
 
              });
         </script>
+    </div>
 </body>
 </html>
