@@ -37,18 +37,11 @@
                     <div id="guessedletters"></div>
             </div>
         </div>
-       
-
-
-
-
 
     </div>
+    
         <script type="text/javascript">
              $(document).ready(function() {
-
-
-
 
             let choices = ['alabama','alaska','arizona','arkansas','california','colorado','connecticut','delaware','district of columbia','florida','georgia','hawaii','idaho','illinois','indiana','iowa','kansas','kentucky','louisiana','maine','maryland','massachusetts','michigan','minnesota','mississippi','missouri','montana','nebraska','nevada','new hampshire','new jersey','new mexico','new york','north carolina','north dakota','ohio','oklahoma','oregon','pennsylvania','rhode island','south carolina','south dakota','tennessee','texas','utah','vermont','virginia','washington','west virginia','wisconsin','wyoming']
 
@@ -103,10 +96,8 @@
                         trueCount++
                         console.log(trueCount)
                     }
-              
-                
+                     
                 }
-
 
                 if (guesses.includes(userGuess)) {
                     
@@ -144,22 +135,15 @@
                     
                 }
 
-
-                
-
                 guessremain--;
                 $("#guessremain").text(guessremain)
                 
-                 
-
-
                 }
 
                 else if (guessremain === 0 && $("#Title").text() === "Press any key to guess a letter" ){
                     $("#Title").text("You lost, press any key to try again");
                 }                
-            
-                
+                       
                 else if (guessremain === 0 && $("#Title").text() === "You lost, press any key to try again") {
                     $("#Title").text("Press any key to guess a letter");
                     $("#guessedletters").empty()
@@ -180,9 +164,6 @@
                 }
              }
              
-    
-
-
              });
         </script>
     </div>
